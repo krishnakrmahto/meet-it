@@ -1,6 +1,4 @@
-let contextMenu = {};
-
-contextMenu.createTakeMeBackToMeetMenu = chrome.contextMenus.create({
+const createContextMenu = chrome.contextMenus.create({
     "title": "Take me back to meet",
     "contexts": ["all"]
 }, () => {
@@ -8,6 +6,8 @@ contextMenu.createTakeMeBackToMeetMenu = chrome.contextMenus.create({
         console.error(chrome.runtime.lastError.message);
     }
 });
+
+const contextMenu = { createTakeMeBackToMeetMenu: createContextMenu };
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === contextMenu.createTakeMeBackToMeetMenu) {
@@ -27,4 +27,3 @@ const switchToMeetTab = (tabs) => {
         }
     });
 };
-
