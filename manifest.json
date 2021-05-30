@@ -1,0 +1,11 @@
+{
+    "manifest_version": 2,
+    "name": "My Extension",
+    "version": "0.1",
+    "description": "An extension to take you back to your \"important\" meet tab from your current \"more important\" tab.",
+    "background": {
+        "persistent": true,
+        "scripts": ["src/contextMenu.js"]
+    },
+    "permissions": ["contextMenus"]
+}
