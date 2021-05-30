@@ -5,7 +5,7 @@ contextMenu.createTakeMeBackToMeetMenu = chrome.contextMenus.create({
     "contexts": ["all"]
 }, () => {
     if (chrome.runtime.lastError) {
-        console.error(chrome.runtime.lastError.message)
+        console.error(chrome.runtime.lastError.message);
     }
 });
 
@@ -14,13 +14,17 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         chrome.tabs.query({ currentWindow: true }, function (tabs) {
 
             if (tabs.length === 1) return;
-        
-            tabs.forEach((tab, index) => {
-                if ('meet.google.com' === new URL(tab.url).hostname) {
-                    chrome.tabs.update(tabs[index].id, {active: true});
-                }
-            })
+
+            switchToMeetTab(tabs);
         });
     }
 });
+
+const switchToMeetTab = (tabs) => {
+    tabs.forEach((tab, index) => {
+        if ('meet.google.com' === new URL(tab.url).hostname) {
+            chrome.tabs.update(tabs[index].id, {active: true});
+        }
+    });
+};
 
