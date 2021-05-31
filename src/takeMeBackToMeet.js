@@ -1,4 +1,4 @@
-const createContextMenu = chrome.contextMenus.create({
+const takeMeBackToMeetContextMenu = chrome.contextMenus.create({
     "title": "Take me back to Meet",
     "contexts": ["all"]
 }, () => {
@@ -7,10 +7,10 @@ const createContextMenu = chrome.contextMenus.create({
     }
 });
 
-const contextMenu = { createTakeMeBackToMeetMenu: createContextMenu };
+const contextMenu = { contextMenu: takeMeBackToMeetContextMenu };
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === contextMenu.createTakeMeBackToMeetMenu) {
+    if (info.menuItemId === contextMenu.contextMenu) {
         chrome.tabs.query({ currentWindow: true }, function (tabs) {
 
             if (tabs.length === 1) return;
