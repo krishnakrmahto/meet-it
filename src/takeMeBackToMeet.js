@@ -1,5 +1,5 @@
 const createContextMenu = chrome.contextMenus.create({
-    "title": "Take me back to meet",
+    "title": "Take me back to Meet",
     "contexts": ["all"]
 }, () => {
     if (chrome.runtime.lastError) {
