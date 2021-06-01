@@ -22,7 +22,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
 const switchToMeetTab = (tabs) => {
     tabs.forEach((tab, index) => {
-        if ('meet.google.com' === new URL(tab.url).hostname) {
+        let ongoingMeetRegex = /meet.google.com\/[a-zA-Z]{3}\-[a-zA-Z]{4}\-[a-zA-Z]{3}.*/gm
+        if (tab.url.match(ongoingMeetRegex)) {
             chrome.tabs.update(tabs[index].id, {active: true});
         }
     });
