@@ -1,0 +1,11 @@
+{
+    "manifest_version": 2,
+    "name": "Take me back to Meet",
+    "version": "1.1.0",
+    "description": "A simple, lightweight extension to take you back to your \"important\" Google Meet tab from your current \"more important\" tab.",
+    "background": {
+        "persistent": true,
+        "scripts": ["src/takeMeBackToMeet.js"]
+    },
+    "permissions": ["contextMenus", "activeTab", "tabs"]
+}
