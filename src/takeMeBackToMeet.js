@@ -1,16 +1,8 @@
-const takeMeBackToMeetContextMenuId = chrome.contextMenus.create({
-    "title": "Take me back to Meet",
-    "contexts": ["all"]
-}, () => {
-    if (chrome.runtime.lastError) {
-        console.error(chrome.runtime.lastError.message);
-    }
-});
-
-const takeMeBackToMeetContextMenu = { contextMenuId: takeMeBackToMeetContextMenuId };
+import { takeMeBackToMeetContextMenuId } from "./contextMenus";
+import { isLiveGoogleMeetTab } from "./utils";
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === takeMeBackToMeetContextMenu.contextMenuId) {
+    if (info.menuItemId === takeMeBackToMeetContextMenuId) {
         chrome.tabs.query({}, function (tabs) {
             console.log("tabs", tabs);
             if (tabs.length === 1) return;
@@ -22,8 +14,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
 const switchToMeetTab = (tabs) => {
     tabs.forEach((tab, index) => {
-        let ongoingMeetRegex = /meet.google.com\/[a-zA-Z]{3}\-[a-zA-Z]{4}\-[a-zA-Z]{3}.*/gm
-        if (tab.url.match(ongoingMeetRegex)) {
+        if (isLiveGoogleMeetTab(tab)) {
             chrome.tabs.update(tab.id, { selected: true, active: true });
             chrome.windows.update(tab.windowId, { drawAttention: true, focused: true });
         }
