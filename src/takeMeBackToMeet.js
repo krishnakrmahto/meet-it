@@ -1,4 +1,5 @@
-import { takeMeBackToMeetContextMenuId } from "./contextMenus";
+import "babel-polyfill";
+import { takeMeBackToMeetContextMenuId, muteContextMenuId, unmuteContextMenuId } from "./contextMenus";
 import { isLiveGoogleMeetTab } from "./utils";
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
@@ -20,3 +21,24 @@ const switchToMeetTab = (tabs) => {
         }
     });
 };
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.menuItemId === muteContextMenuId) {
+        chrome.tabs.query({}, function (tabs) {
+            tabs.forEach((tab) => {
+                if (isLiveGoogleMeetTab(tab)) {
+                    chrome.tabs.sendMessage(tab.id,{ action: "mute" },function (response) {});
+                }
+            })
+        });
+    }
+    if (info.menuItemId === unmuteContextMenuId) {
+        chrome.tabs.query({}, function (tabs) {
+            tabs.forEach((tab) => {
+                if (isLiveGoogleMeetTab(tab)) {
+                    chrome.tabs.sendMessage(tab.id,{ action: "unmute" },function (response) {});
+                }
+            })
+        });
+    }
+});
