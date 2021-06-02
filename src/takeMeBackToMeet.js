@@ -11,8 +11,8 @@ const takeMeBackToMeetContextMenu = { contextMenuId: takeMeBackToMeetContextMenu
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === takeMeBackToMeetContextMenu.contextMenuId) {
-        chrome.tabs.query({ currentWindow: true }, function (tabs) {
-
+        chrome.tabs.query({}, function (tabs) {
+            console.log("tabs", tabs);
             if (tabs.length === 1) return;
 
             switchToMeetTab(tabs);
@@ -24,7 +24,8 @@ const switchToMeetTab = (tabs) => {
     tabs.forEach((tab, index) => {
         let ongoingMeetRegex = /meet.google.com\/[a-zA-Z]{3}\-[a-zA-Z]{4}\-[a-zA-Z]{3}.*/gm
         if (tab.url.match(ongoingMeetRegex)) {
-            chrome.tabs.update(tabs[index].id, {active: true});
+            chrome.tabs.update(tab.id, { selected: true, active: true });
+            chrome.windows.update(tab.windowId, { drawAttention: true, focused: true });
         }
     });
 };
