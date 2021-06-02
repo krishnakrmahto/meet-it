@@ -1,5 +1,5 @@
 # Take Me Back to Google Meet
-**Version 1.0.0** <br/> <br/>
+**Version 1.1.0** <br/> <br/>
 A simple, lightweight extension to take you back to your "important" Google Meet tab from your current "more important" tab :wink:.
 
 ## Simple to use
