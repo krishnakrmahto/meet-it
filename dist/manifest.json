@@ -1,20 +1,11 @@
 {
     "manifest_version": 2,
     "name": "Take me back to Meet",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "description": "A simple, lightweight extension to take you back to your \"important\" Google Meet tab from your current \"more important\" tab.",
     "background": {
         "persistent": true,
         "scripts": ["src/takeMeBackToMeet.js"]
     },
-    "permissions": ["contextMenus", "activeTab", "tabs"],
-    "content_scripts": [
-        {
-          "matches": ["http://meet.google.com/*", "https://meet.google.com/*"],
-          "js": ["src/microphoneStateHandler.js"],
-          "all_frames": true,
-          "run_at": "document_start"
-        }
-      ],
-      "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    "permissions": ["contextMenus", "activeTab", "tabs"]
 }

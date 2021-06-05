@@ -1,5 +1,5 @@
 # Take Me Back to Google Meet
-**Version 1.1.0** <br/> <br/>
+**Version 2.0.0** <br/> <br/>
 A simple, lightweight extension to take you back to your "important" Google Meet tab from your current "more important" tab :wink:.
 
 ## Simple to use
@@ -19,3 +19,13 @@ A simple, lightweight extension to take you back to your "important" Google Meet
 
 ## Uninstall
 Click `Remove` on the extension card from [chrome://extensions](chrome://extensions)
+
+## Build your changes
+The `dist/ ` director is all that you need to load on Chrome.
+However, if you add your changes and want to see how it works out, you'll have to run the following on your terminal:
+```sh
+yarn
+yarn build
+```
+`yarn` installs all the packages required by the project, and should be run only the first time. `yarn build` will update the `dist/` directory with all the js files along with your changes.
+

@@ -6,7 +6,8 @@
   "author": "krishnakrmahto97 <krish.thorcode@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist/src/*.js dist/src/*.js.map && parcel build src/* -d dist/src/"
+    "clean": "rm -rf dist/src/*.js dist/src/*.js.map dist/icon",
+    "build": "yarn run clean && parcel build src/* -d dist/src/"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
