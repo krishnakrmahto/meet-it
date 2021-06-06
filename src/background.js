@@ -1,7 +1,7 @@
 import "babel-polyfill";
 import { takeMeBackToMeetContextMenuId, muteContextMenuId, unmuteContextMenuId } from "./contextMenus";
 import { switchToMeetTab, setMeetMuteState } from "./utils";
-import { MUTE, UNMUTE } from "./constants"
+import { MUTE, MUTED, UNMUTE, UNMUTED } from "./constants"
 
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     if (info.menuItemId === takeMeBackToMeetContextMenuId) {
@@ -20,3 +20,29 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     }
 });
 
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    let mutingMessage = message.mutingMessage;
+    console.log("Runtime mutingMessage received:", mutingMessage);
+    if (mutingMessage && mutingMessage === MUTED) {
+        chrome.notifications.create("muting-message",
+            {
+              type: "basic",
+              iconUrl: "/static/image.png",
+              title: "Meet microphone",
+              message: MUTED,
+            },
+            function () {}
+          );
+    }
+    else if (mutingMessage && mutingMessage === UNMUTED) {
+        chrome.notifications.create("muting-message",
+        {
+          type: "basic",
+          iconUrl: "/static/image.png",
+          title: "Meet microphone",
+          message: MUTED,
+        },
+        function () {}
+      );
+    }
+});

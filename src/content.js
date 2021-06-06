@@ -1,13 +1,17 @@
-import { MEET_MESSAGE_WHEN_MUTE_IS_OFF, MEET_MESSAGE_WHEN_MUTE_IS_ON, MUTE, UNMUTE } from "./constants"
+import { MEET_MESSAGE_WHEN_MUTE_IS_OFF, MEET_MESSAGE_WHEN_MUTE_IS_ON, MUTE, UNMUTE, MUTED, UNMUTED } from "./constants"
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     let requestedMuteState = message.muteState;
 
-    if (requestedMuteState === MUTE) {
+    if (requestedMuteState && requestedMuteState === MUTE) {
         setMuteState(MEET_MESSAGE_WHEN_MUTE_IS_OFF);
+        chrome.runtime.sendMessage({ mutingMessage: MUTED });
+        console.log("Runtime message sent:", MUTED);
     }
-    else if (requestedMuteState === UNMUTE) {
+    else if (requestedMuteState && requestedMuteState === UNMUTE) {
         setMuteState(MEET_MESSAGE_WHEN_MUTE_IS_ON);
+        chrome.runtime.sendMessage({ mutingMessage: UNMUTED });
+        console.log("Runtime message sent:", UNMUTED);
     }
 });
 

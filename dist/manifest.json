@@ -7,7 +7,7 @@
         "persistent": true,
         "scripts": ["src/background.js"]
     },
-    "permissions": ["contextMenus", "activeTab", "tabs"],
+    "permissions": ["contextMenus", "activeTab", "tabs", "notifications"],
     "content_scripts": [
         {
           "matches": ["http://meet.google.com/*", "https://meet.google.com/*"],
