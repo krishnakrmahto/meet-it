@@ -1,5 +1,3 @@
-import { getMeetTab, updateContextMenuTitle, isCurrentlyMuted } from "./utils";
-
 const takeMeBackToMeetContextMenuId = chrome.contextMenus.create({
     title: "Take me back to Meet",
     contexts: ["all"]

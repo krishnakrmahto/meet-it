@@ -6,11 +6,17 @@ const isLiveGoogleMeetTab = (tab) => {
     return tab.url.match(ongoingMeetRegex);
 };
 
-const switchToMeetTab = (tabs) => {
-    let tab = getMeetTab();
-    if (tab != null) {
-        chrome.tabs.update(tab.id, { selected: true, active: true });
-        chrome.windows.update(tab.windowId, { drawAttention: true, focused: true });
+const switchToMeetTab = async () => {
+    try {
+        let tab = await getMeetTab();
+        console.log("Got meet tab:", tab);
+        if (tab != null) {
+            console.log("Updating tab to meet:", tab);
+            chrome.tabs.update(tab.id, { selected: true, active: true });
+            chrome.windows.update(tab.windowId, { drawAttention: true, focused: true });
+        }
+    } catch (err) {
+        console.log("Error while getting meet tab");
     }
 };
 
@@ -24,6 +30,7 @@ const changeFavicon = (microphoneCurrentState) => {
 };
 
 const setMuteState = async (tab, muteState) => {
+    console.log("Requested mute state:", muteState);
     if (muteState === MUTE) {
         await chrome.tabs.update(tab.id, { muted: true });
     }
@@ -37,15 +44,20 @@ const isCurrentlyMuted = (tab) => {
 };
 
 const getMeetTab = () => {
-    chrome.tabs.query({}, (tabs) => {
-        tabs.forEach((tab, index) => {
-            if (isLiveGoogleMeetTab(tab)) {
-                return tab;
-            }
-        });
-
-        return null;
-    });
+    return new Promise((resolve, reject) => {
+        try {
+            chrome.tabs.query({}, (tabs) => {
+                tabs.forEach((tab, index) => {
+                    if (isLiveGoogleMeetTab(tab)) {
+                        console.log("Found live Google Meet tab:", tab);
+                        return tab;
+                    }
+                });
+            });
+        } catch (err) {
+            reject(err);
+        }
+    })
 };
 
 const updateContextMenuTitle = (contextMenuId, newTitle) => {
