@@ -1,4 +1,4 @@
-# Take Me Back to Google Meet
+# Meet It
 **Version 2.1.0** <br/> <br/>
 Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using context menus.
 
@@ -24,8 +24,8 @@ Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using cont
 Click `Remove` on the extension card from [chrome://extensions](chrome://extensions)
 
 ## Build your changes
-The `dist/ ` director is all that you need to load on Chrome.
-However, if you add your changes and want to see how it works out, you'll have to run the following on your terminal:
+The `dist/ ` directory is all that you need to load on Chrome to start using the extension. The directory will always contain the latest deployable code.
+However, if you add your own changes and want to see how it works out, you'll have to run the following on your terminal:
 ```sh
 yarn
 yarn build
