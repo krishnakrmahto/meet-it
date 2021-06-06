@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         chrome.notifications.create("muting-message",
             {
               type: "basic",
-              iconUrl: "/static/image.png",
+              iconUrl: "/icons/muted-notification.png",
               title: "Meet microphone",
               message: MUTED,
             },
@@ -38,7 +38,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         chrome.notifications.create("muting-message",
         {
           type: "basic",
-          iconUrl: "/static/image.png",
+          iconUrl: "/icons/unmuted-notification.png",
           title: "Meet microphone",
           message: MUTED,
         },
