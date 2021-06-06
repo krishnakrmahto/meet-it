@@ -7,5 +7,14 @@
         "persistent": true,
         "scripts": ["src/background.js"]
     },
-    "permissions": ["contextMenus", "activeTab", "tabs"]
+    "permissions": ["contextMenus", "activeTab", "tabs"],
+    "content_scripts": [
+        {
+          "matches": ["http://meet.google.com/*", "https://meet.google.com/*"],
+          "js": ["src/content.js"],
+          "all_frames": true,
+          "run_at": "document_start"
+        }
+      ],
+      "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'" 
 }

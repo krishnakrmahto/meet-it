@@ -20,9 +20,11 @@ const switchToMeetTab = async () => {
     }
 };
 
-const setMeetMuteState = (muteState) => {
-    let meetTab = getMeetTab();
-    setMuteState(meetTab, muteState);
+const setMeetMuteState = async (muteState) => {
+    let meetTab = await getMeetTab();
+    // setMuteState(meetTab, muteState);
+    console.log("Sending message to tab:", meetTab, "with muteState:", muteState);
+    chrome.tabs.sendMessage(meetTab.id, { muteState });
 };
 
 const changeFavicon = (microphoneCurrentState) => {
