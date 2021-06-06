@@ -1,13 +1,16 @@
 # Take Me Back to Google Meet
-**Version 2.0.0** <br/> <br/>
+**Version 2.1.0** <br/> <br/>
 Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using context menus.
 
 ## Simple to use
 ### Same window
-![Demo](./static/back-to-google-meet-same-window.gif)
+![Demo](./static/same-window-take-me-back-to-meet.gif)
 
 ### Multiple windows
-![Demo](./static/back-to-google-meet-multi-window.gif)
+![Demo](./static/multi-window-take-me-to-meet.gif)
+
+### Mute and Unmute
+![Demo](./static/mute-unmute.gif)
 
 ## Installation
 1. Clone the repo
