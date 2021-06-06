@@ -50,7 +50,7 @@ const getMeetTab = () => {
                 tabs.forEach((tab, index) => {
                     if (isLiveGoogleMeetTab(tab)) {
                         console.log("Found live Google Meet tab:", tab);
-                        return tab;
+                        return resolve(tab);
                     }
                 });
             });
