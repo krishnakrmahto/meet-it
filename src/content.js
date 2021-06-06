@@ -13,9 +13,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 const setMuteState = (searchString) => {
     console.log("Search string for muting/unmuting:", searchString);
-    let elem = [...document.querySelectorAll("[data-tooltip]")].filter((item) =>
+    let microphoneToggleButton = [...document.querySelectorAll("[data-tooltip]")].filter((item) =>
       item.getAttribute("aria-label").toString().includes(searchString))[0];
-    if (elem) {
-      elem.click();
+    if (microphoneToggleButton) {
+      microphoneToggleButton.click();
+      console.log("Clicked microphone toggle button");
     }
   }
