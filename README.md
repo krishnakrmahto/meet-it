@@ -1,6 +1,6 @@
 # Take Me Back to Google Meet
 **Version 2.0.0** <br/> <br/>
-A simple, lightweight extension to take you back to your "important" Google Meet tab from your current "more important" tab :wink:.
+Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using context menus.
 
 ## Simple to use
 ### Same window
