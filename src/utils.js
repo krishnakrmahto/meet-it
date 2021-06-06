@@ -68,4 +68,16 @@ const updateContextMenuTitle = (contextMenuId, newTitle) => {
     });
 };
 
-export { isLiveGoogleMeetTab, switchToMeetTab, changeFavicon, setMeetMuteState, updateContextMenuTitle, isCurrentlyMuted };
+
+const createBasicNotificationWithoutId = (iconUrl, title, message, callback) => {
+    chrome.notifications.create({
+        type: "basic",
+        iconUrl: iconUrl,
+        title: title,
+        message: message,
+    },
+        callback
+    );
+};
+
+export { isLiveGoogleMeetTab, switchToMeetTab, changeFavicon, setMeetMuteState, updateContextMenuTitle, isCurrentlyMuted, createBasicNotificationWithoutId };
