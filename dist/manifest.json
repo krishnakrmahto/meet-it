@@ -1,13 +1,13 @@
 {
     "manifest_version": 2,
     "name": "Meet It",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome.",
     "background": {
         "persistent": true,
         "scripts": ["src/background.js"]
     },
-    "permissions": ["contextMenus", "activeTab", "tabs", "notifications"],
+    "permissions": ["contextMenus", "tabs", "notifications"],
     "content_scripts": [
         {
           "matches": ["http://meet.google.com/*", "https://meet.google.com/*"],
