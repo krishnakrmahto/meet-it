@@ -5,13 +5,10 @@ import { MUTE, MUTED, UNMUTE, UNMUTED } from "./constants"
 
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (info.menuItemId === takeMeBackToMeetContextMenuId) {
-    console.log("Switch to meet tab option clicked.");
     switchToMeetTab();
-    console.log("switchToMeetTab call done.");
   }
 
   if (info.menuItemId === muteContextMenuId) {
-    console.log("Mute meet tab option clicked.");
     setMeetMuteState(MUTE);
   }
 
