@@ -18,7 +18,7 @@ Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using cont
 3. Make sure `Developer mode` is toggled to on
 4. Click `Load Unpacked`
 5. Select the `dist/` directory from cloned files; done.
-6. [More](https://developer.chrome.com/docs/extensions/mv3/getstarted/) on using unpacked extension
+6. [More](https://developer.chrome.com/docs/extensions/mv3/getstarted/) on using unpacked extensions
 
 ## Uninstall
 Click `Remove` on the extension card from [chrome://extensions](chrome://extensions)
