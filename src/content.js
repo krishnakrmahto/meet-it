@@ -14,9 +14,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 const setMuteState = (searchString) => {
-  let microphoneToggleButton = [...document.querySelectorAll("[data-tooltip]")].filter((item) =>
-    item.getAttribute("aria-label").toString().includes(searchString))[0];
-  if (microphoneToggleButton) {
-    microphoneToggleButton.click();
-  }
+  [...document.querySelectorAll("button[aria-label]")].filter(
+    (item) => item.getAttribute("aria-label").toString().includes(searchString))[0].click();
 }
