@@ -13,6 +13,9 @@ Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using cont
 ![Demo](./static/mute-unmute.gif)
 
 ## Installation
+### Install from the Chrome Web Store
+https://chrome.google.com/webstore/detail/meet-it/fgdkopfjcbombbonmfkgjpjgaeaddlak
+#### or,
 1. Clone the repo
 2. Go to [chrome://extensions](chrome://extensions)
 3. Make sure `Developer mode` is toggled to on
