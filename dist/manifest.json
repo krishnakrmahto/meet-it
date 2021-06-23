@@ -8,6 +8,22 @@
         "scripts": ["src/background.js"]
     },
     "permissions": ["contextMenus", "tabs", "notifications"],
+    "commands": {
+      "mute": {
+        "description": "Mute meet microphone",
+        "suggested_key": {
+          "default": "Ctrl+Shift+M",
+          "mac": "MacCtrl+Shift+Q"
+        }
+      },
+      "unmute": {
+        "description": "Unmute meet microphone",
+        "suggested_key": {
+          "default": "Ctrl+Shift+L",
+          "mac": "MacCtrl+Shift+A"
+        }
+      }
+    },
     "content_scripts": [
         {
           "matches": ["http://meet.google.com/*", "https://meet.google.com/*"],

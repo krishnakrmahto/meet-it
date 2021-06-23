@@ -27,3 +27,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     createBasicNotificationWithoutId("/icons/unmuted-notification.png", notificationTitle, "Unmuted!",  function() {});
   }
 });
+
+chrome.commands.onCommand.addListener((command) => {
+  setMeetMuteState(command);
+});
