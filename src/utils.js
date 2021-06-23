@@ -41,10 +41,12 @@ const setMuteState = async (tab, muteState) => {
     }
 };
 
-const meetHasMoreThanOneParticipants = (tab) => {
+const runCallBackIfMoreThanOneParticipants = (tab, callback) => {
     chrome.tabs.sendMessage(tab.id, { requestQuery: GET_MEET_NUM_PARTICIPATS }, {}, (numParticipants) => {
         console.log('Number of participants:', numParticipants);
-        return numParticipants > 1;
+        if(numParticipants > 1) {
+            callback();
+        }
     });
 }
 
@@ -58,10 +60,10 @@ const getMeetTab = () => {
             chrome.tabs.query({}, (tabs) => {
                 tabs.forEach((tab, index) => {
                     if (isLiveGoogleMeetTab(tab)) {
-                        if (meetHasMoreThanOneParticipants(tab)) {
+                        if (runCallBackIfMoreThanOneParticipants(tab, () => {
                             console.log("Found live Google Meet tab with one participant:", tab);
                             return resolve(tab);
-                        }
+                        }));
                     }
                 });
             });
