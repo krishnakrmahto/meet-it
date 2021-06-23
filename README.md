@@ -1,5 +1,5 @@
 # Meet It
-**Version 2.3.0** <br/> <br/>
+**Version 2.3.1** <br/> <br/>
 Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using context menus.
 
 ## Simple to use

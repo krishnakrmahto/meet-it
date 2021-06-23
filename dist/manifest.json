@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Meet It",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "description": "Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome.",
     "background": {
         "persistent": true,
@@ -9,18 +9,25 @@
     },
     "permissions": ["contextMenus", "tabs", "notifications"],
     "commands": {
-      "mute": {
-        "description": "Mute meet microphone",
+      "take-me-back-to-meet": {
+        "description": "Switch to meet tab",
         "suggested_key": {
           "default": "Ctrl+Shift+M",
           "mac": "MacCtrl+Shift+Q"
         }
       },
-      "unmute": {
-        "description": "Unmute meet microphone",
+      "mute": {
+        "description": "Mute meet microphone",
         "suggested_key": {
           "default": "Ctrl+Shift+L",
           "mac": "MacCtrl+Shift+A"
+        }
+      },
+      "unmute": {
+        "description": "Unmute meet microphone",
+        "suggested_key": {
+          "default": "Ctrl+Shift+K",
+          "mac": "MacCtrl+Shift+Z"
         }
       }
     },
