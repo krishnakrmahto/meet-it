@@ -1,5 +1,5 @@
 # Meet It
-**Version 2.2.0** <br/> <br/>
+**Version 2.3.0** <br/> <br/>
 Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using context menus.
 
 ## Simple to use
@@ -11,6 +11,9 @@ Go back to Meet tab, Mute and Unmute yourself from anywhere on Chrome using cont
 
 ### Mute and Unmute
 ![Demo](./static/mute-unmute.gif)
+
+### Keyboard shortcuts
+The extension also comes with keyboard shortcuts. You can see the shortcuts in the `Keyboard shortcuts` menu from the `chrome://extensions`.
 
 ## Installation
 ### Install from the Chrome Web Store
