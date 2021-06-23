@@ -1,4 +1,4 @@
-import { MUTE, UNMUTE } from "./constants";
+import { GET_MEET_NUM_PARTICIPATS, MUTE, UNMUTE } from "./constants";
 
 const ongoingMeetRegex = /meet.google.com\/[a-zA-Z]{3}\-[a-zA-Z]{4}\-[a-zA-Z]{3}.*/gm;
 
@@ -41,6 +41,13 @@ const setMuteState = async (tab, muteState) => {
     }
 };
 
+const meetHasMoreThanOneParticipants = (tab) => {
+    chrome.tabs.sendMessage(tab.id, { requestQuery: GET_MEET_NUM_PARTICIPATS }, {}, (numParticipants) => {
+        console.log('Number of participants:', numParticipants);
+        return numParticipants > 1;
+    });
+}
+
 const isCurrentlyMuted = (tab) => {
     return tab.mutedInfo.muted;
 };
@@ -51,8 +58,10 @@ const getMeetTab = () => {
             chrome.tabs.query({}, (tabs) => {
                 tabs.forEach((tab, index) => {
                     if (isLiveGoogleMeetTab(tab)) {
-                        console.log("Found live Google Meet tab:", tab);
-                        return resolve(tab);
+                        if (meetHasMoreThanOneParticipants(tab)) {
+                            console.log("Found live Google Meet tab with one participant:", tab);
+                            return resolve(tab);
+                        }
                     }
                 });
             });
