@@ -42,10 +42,14 @@ const setMuteState = async (tab, muteState) => {
 };
 
 const resolveTabIfHasMoreThanOneParticipants = (tab, callback) => {
-    chrome.tabs.sendMessage(tab.id, { requestQuery: GET_MEET_NUM_PARTICIPATS }, {}, (numParticipants) => {
-        console.log('Number of participants:', numParticipants);
-        callback(numParticipants);
-    });
+    try {
+        chrome.tabs.sendMessage(tab.id, { requestQuery: GET_MEET_NUM_PARTICIPATS }, {}, (numParticipants) => {
+            console.log('Number of participants:', numParticipants);
+            callback(numParticipants);
+        });
+    } catch (e) {
+        console.error("Error while sendMessage for numParticipants:", e);
+    }
 }
 
 const isCurrentlyMuted = (tab) => {

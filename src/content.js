@@ -14,6 +14,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   else if (message.requestQuery && message.requestQuery == GET_MEET_NUM_PARTICIPATS) {
     sendResponse(parseInt(document.getElementsByClassName("uGOf1d")[0].innerText));
   }
+  return true;
 });
 
 const setMuteState = (searchString) => {
