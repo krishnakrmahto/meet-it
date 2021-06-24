@@ -18,6 +18,8 @@ The extension also comes with keyboard shortcuts. You can see the shortcuts in t
 ## Installation
 ### Install from the Chrome Web Store
 https://chrome.google.com/webstore/detail/meet-it/fgdkopfjcbombbonmfkgjpjgaeaddlak
+### Alternatively,
+download the `dist` zip from the latest release.
 #### or,
 1. Clone the repo
 2. Go to [chrome://extensions](chrome://extensions)
